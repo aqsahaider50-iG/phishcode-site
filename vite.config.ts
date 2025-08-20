@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
-export default {
+export default defineConfig({
+  base: '/phishcode-site/', // <-- Must match your repo name
   plugins: [react()],
-  base: '/phishcode-site/',   // 👈 this must match your repo name
-}
+});
