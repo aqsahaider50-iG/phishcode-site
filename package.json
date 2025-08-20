@@ -1,4 +1,12 @@
+
 {
+  "scripts": {
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  }
+}
+/*{
   "name": "phishing-sim-ui",
   "private": true,
   "version": "0.0.0",
@@ -33,4 +41,5 @@
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.2"
   }
-}
+}*/
+
