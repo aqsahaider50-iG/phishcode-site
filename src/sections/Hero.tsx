@@ -102,7 +102,7 @@ export default function Hero() {
                 letterSpacing="-0.01em"
                 fontWeight="normal"
               >
-                Phishing Attack Simulation
+                AI Powered Phishing Attack Simulation
               </Heading>
             </MotionBox>
 
