@@ -2,6 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
+  base: "/phishcode-site/",  // 👈 must match your repo name
   plugins: [react()],
-  base: "/<repo-name>/", // <-- put your repo name here, with slashes
-});
+})
