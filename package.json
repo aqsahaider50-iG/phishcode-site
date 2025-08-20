@@ -1,21 +1,14 @@
 
+
 {
-  "scripts": {
-    "build": "vite build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  }
-}
-/*{
   "name": "phishing-sim-ui",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@chakra-ui/react": "2.8.2",
@@ -41,5 +34,5 @@
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.2"
   }
-}*/
+}
 
