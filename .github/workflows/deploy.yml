@@ -36,9 +36,9 @@ jobs:
       - name: Add 404 fallback
         run: cp dist/index.html dist/404.html
 
-      # 🔼 Use the latest uploader (v4) to avoid the deprecation error
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3 # ✅ latest available
+
         with:
           path: dist
 
@@ -51,4 +51,4 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v3
