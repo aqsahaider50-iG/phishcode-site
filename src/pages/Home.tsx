@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import Hero from "../sections/Hero";
 import TabsBar from "../sections/TabsBar";
-import Overview from "../sections/overview";
+import Overview from "../sections/Overview";
 import ThreeFeatureRow from "../sections/ThreeFeatureRow";
 import ImpactBand from "../sections/ImpactBand";
 import ApproachCard from "../sections/ApproachCard";
