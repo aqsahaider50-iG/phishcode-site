@@ -32,7 +32,7 @@ import {
 import useInViewAnimation from "../components/animations/useInViewAnimation";
 import { FiCheckCircle, FiChevronDown } from "react-icons/fi";
 // assets
-import stripes from "../assets/png imgs/circles png.png";
+import stripes from "../assets/png-imgs/circles png.png";
 // TEMP screenshot (replace when your projects image is ready)
 const placeholderShot =
   "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1400&auto=format&fit=crop";
