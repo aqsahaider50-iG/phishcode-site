@@ -110,8 +110,10 @@ export default function CTASplit() {
               overflow="hidden"
               h="100%"
               // subtle hover zoom
-              whileHover={{ scale: 1.01 }}
-              transition={{ type: "spring", stiffness: 220, damping: 24 }}
+              whileHover={{
+                scale: 1.01,
+                transition: { type: "spring", stiffness: 220, damping: 24 },
+              }}
             >
               <MotionImg
                 // fade the image itself on enter so border shows immediately
@@ -126,8 +128,10 @@ export default function CTASplit() {
                 h="100%"
                 objectFit="cover"
                 // micro parallax on hover feels lively but not distracting
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
+                whileHover={{
+                  scale: 1.03,
+                  transition: { duration: 0.35, ease: "easeOut" },
+                }}
               />
             </MotionBox>
           </SimpleGrid>

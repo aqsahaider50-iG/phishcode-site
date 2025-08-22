@@ -161,8 +161,10 @@ export default function ResourcesGrid() {
                   boxShadow="sm"
                   overflow="hidden"
                   maxW={{ base: "100%", md: "420px" }}
-                  whileHover={{ y: -4 }}
-                  transition={{ type: "spring", stiffness: 230, damping: 22 }}
+                  whileHover={{
+                    y: -4,
+                    transition: { type: "spring", stiffness: 230, damping: 22 },
+                  }}
                 >
                   {/* Image with fast decode + entrance + hover zoom */}
                   <Box p={3}>
@@ -182,8 +184,10 @@ export default function ResourcesGrid() {
                       variants={scaleReveal(0.96, 1, 0.15)}
                       initial="hidden"
                       animate={controls}
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.35, ease: "easeOut" }}
+                      whileHover={{
+                        scale: 1.02,
+                        transition: { duration: 0.35, ease: "easeOut" },
+                      }}
                       loading="lazy"
                       decoding="async"
                       fetchPriority="low"

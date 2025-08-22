@@ -66,8 +66,10 @@ export default function ContactCards() {
                 key={i}
                 variants={fadeUp(0)}
                 // pleasant hover lift + shadow
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                whileHover={{
+                  y: -4,
+                  transition: { type: "spring", stiffness: 260, damping: 20 },
+                }}
                 bg="white"
                 borderRadius="2xl"
                 borderWidth="1px"
