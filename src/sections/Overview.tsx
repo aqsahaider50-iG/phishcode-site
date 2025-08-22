@@ -70,7 +70,10 @@ export default function Overview() {
       overflow="hidden"
       scrollMarginTop="72px"
     >
-      <Container maxW="8xl">
+      <Container
+        maxW={{ base: "100%", sm: "92%", md: "90%", lg: "86%", xl: "7xl" }}
+        px={{ base: 4, md: 6 }}
+      >
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
           spacing={12}

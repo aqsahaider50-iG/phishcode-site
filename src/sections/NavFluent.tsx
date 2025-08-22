@@ -4,19 +4,14 @@ import {
   Box,
   Container,
   HStack,
-  Text,
-  Icon,
   Spacer,
   Button,
   Link,
   Show,
-  Hide,
-  Menu,
   IconButton,
-  MenuItem,
-  Image, // <-- add Image
+  Image,
+  Flex,
 } from "@chakra-ui/react";
-import { FiChevronDown } from "react-icons/fi";
 
 export default function NavFluent() {
   return (
@@ -25,65 +20,77 @@ export default function NavFluent() {
       bg="white"
       borderBottom="1px"
       borderColor="neutral.100"
-      // position="sticky"
       top={0}
       zIndex={20}
     >
-      <Container maxW="7xl" py={2}>
-        {/* allow wrapping so it never overflows on smaller widths */}
-        <HStack spacing={6} align="center" wrap="wrap">
-          {/* Left brand area */}
-          <HStack spacing={3} minW="max-content">
+      <Container
+        maxW={{ base: "100%", md: "7xl" }}
+        px={{ base: 3, md: 6 }} // tighter gutters on mobile
+        py={{ base: 2, md: 2 }}
+      >
+        {/* Use Flex so we can shrink nicely without wrapping the brand/actions apart */}
+        <Flex align="center" minW={0}>
+          {/* Brand (never wraps) */}
+          <HStack spacing={2} minW="max-content">
             <Link href="/" display="inline-flex" alignItems="center">
-              {/* Replace color squares with your logo */}
               <Image
                 src={logo}
-                alt="PhishCode Logo"
-                h={8} // adjust logo height here (e.g., 8–10)
+                alt="PhishCode"
+                h={{ base: 7, md: 8 }} // a bit smaller on mobile
                 objectFit="contain"
               />
             </Link>
           </HStack>
 
-          {/* Middle links */}
-
           <Spacer />
 
-          {/* Right actions */}
-          <HStack spacing={2} minW="max-content">
+          {/* Actions (compact on mobile) */}
+          <HStack
+            spacing={{ base: 2, md: 3 }}
+            minW="max-content"
+            // prevent accidental horizontal scroll on very small screens
+            overflow="hidden"
+          >
+            {/* Feedback icon only on all sizes */}
             <IconButton
               as={Link}
-              href="#feedback" // adjust where it should point
+              href="#feedback"
               aria-label="Feedback"
               variant="ghost"
-              icon={<Image src={feedbackIcon} alt="Feedback" h={6} />}
+              icon={
+                <Image
+                  src={feedbackIcon}
+                  alt="Feedback"
+                  h={{ base: 5, md: 6 }}
+                />
+              }
               _hover={{ bg: "neutral.50" }}
+              size="sm"
             />
-
-            <Show above="sm">
-              <Button
-                size="sm"
-                bg="black"
-                color="white"
-                _hover={{ bg: "blackAlpha.800" }}
-                borderRadius="md"
-                whiteSpace="nowrap"
-              >
-                Get a demo
-              </Button>
-            </Show>
 
             <Button
               size="sm"
               variant="outline"
               borderColor="neutral.300"
-              borderRadius="md"
+              borderRadius="full"
+              px={{ base: 3, md: 4 }}
+              whiteSpace="nowrap"
+            >
+              Get a demo
+            </Button>
+
+            {/* Primary action stays visible but compact on xs */}
+            <Button
+              size="sm"
+              colorScheme="brand"
+              borderRadius="full"
+              px={{ base: 3, md: 4 }}
               whiteSpace="nowrap"
             >
               Sign in
             </Button>
           </HStack>
-        </HStack>
+        </Flex>
       </Container>
     </Box>
   );

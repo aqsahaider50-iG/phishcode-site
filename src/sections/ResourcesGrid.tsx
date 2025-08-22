@@ -66,7 +66,12 @@ export default function ResourcesGrid() {
         style={{ willChange: "opacity, transform" }}
       />
 
-      <Container maxW="7xl" position="relative" zIndex={1}>
+      <Container
+        maxW={{ base: "100%", sm: "92%", md: "90%", lg: "86%", xl: "7xl" }}
+        px={{ base: 4, md: 6 }}
+        position="relative"
+        zIndex={1}
+      >
         {/* Section label + title */}
         <MotionBox
           variants={stagger(0.08, 0.12)}

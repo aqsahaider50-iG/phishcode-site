@@ -53,7 +53,10 @@ export default function ThreeFeatureRow() {
       py={{ base: 12, md: 20 }}
       scrollMarginTop="72px"
     >
-      <Container maxW="7xl">
+      <Container
+        maxW={{ base: "100%", sm: "92%", md: "90%", lg: "86%", xl: "7xl" }}
+        px={{ base: 4, md: 6 }}
+      >
         {/* Centered title + subtitle */}
         <Stack textAlign="center" spacing={3} mb={{ base: 10, md: 14 }}>
           <Heading size={{ base: "xl", md: "xl" }} fontWeight="semibold">

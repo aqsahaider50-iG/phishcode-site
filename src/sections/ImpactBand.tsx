@@ -34,7 +34,10 @@ export default function ImpactBand() {
       overflow="hidden"
       scrollMarginTop="72px"
     >
-      <Container maxW="7xl">
+      <Container
+        maxW={{ base: "100%", sm: "92%", md: "90%", lg: "86%", xl: "7xl" }}
+        px={{ base: 4, md: 6 }}
+      >
         {/* section tag */}
         <Text
           fontSize="sm"

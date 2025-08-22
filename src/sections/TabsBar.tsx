@@ -5,65 +5,135 @@ import {
   Button,
   Link,
   useColorModeValue,
-  useBreakpointValue,
+  Text,
+  Show,
+  Hide,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-const tabs = ["Overview", "Impact", "Approach", "Resources", "Next steps"];
+const items = ["Overview", "Impact", "Approach", "Resources", "Next steps"];
+const ids = items.map((t) => t.toLowerCase().replace(/\s/g, "-"));
 
-export default function TabsBar() {
-  // If your top nav is taller on mobile, adjust the offset per breakpoint
-  const STICKY_TOP = 0;
-
-  const [stuck, setStuck] = useState(false);
-  const bg = useColorModeValue("white", "gray.800");
+function useActiveSection(sectionIds: string[], offset = 72) {
+  const [active, setActive] = useState(sectionIds[0]);
 
   useEffect(() => {
-    const onScroll = () => setStuck(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(id);
+          });
+        },
+        {
+          // Trigger when the section top is this far from the viewport top
+          rootMargin: `-${offset}px 0px -60% 0px`,
+          threshold: [0, 0.2, 0.5, 1],
+        }
+      );
+
+      io.observe(el);
+      observers.push(io);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, [sectionIds, offset]);
+
+  return active;
+}
+
+export default function TabsBar() {
+  const bg = useColorModeValue("white", "gray.800");
+  const border = useColorModeValue("neutral.100", "whiteAlpha.200");
+
+  // Detect currently visible section (offset = sticky bar height)
+  const activeId = useActiveSection(ids, 56);
+  const activeLabel = useMemo(
+    () => items[ids.indexOf(activeId)] ?? items[0],
+    [activeId]
+  );
 
   return (
     <Box
       position="sticky"
-      top={`${STICKY_TOP}px`} // <- sits just under your top nav
-      zIndex={15} // above content, below modal
+      top="0"
+      zIndex={15}
       bg={bg}
       borderBottom="1px"
-      borderColor={stuck ? "neutral.100" : "transparent"}
-      boxShadow={stuck ? "sm" : "none"}
-      // helps on Safari/iOS for a slightly “frosted” feel (optional)
+      borderColor={border}
       backdropFilter="saturate(180%) blur(6px)"
     >
-      <Container maxW="7xl" py={2}>
-        <HStack spacing={{ base: 4, md: 8 }}>
-          {tabs.map((t) => (
-            <Link
-              key={t}
-              href={`#${t.toLowerCase().replace(/\s/g, "-")}`}
-              fontWeight={600}
-              color="neutral.700"
-              _hover={{ color: "brand.700" }}
+      <Container
+        maxW={{ base: "100%", md: "7xl" }}
+        px={{ base: 3, md: 6 }}
+        py={2}
+      >
+        {/* MOBILE: show only active label */}
+        <Hide above="md">
+          <HStack justify="space-between">
+            <Text fontWeight={700}>{activeLabel}</Text>
+            {/* Optional mobile CTA — hide if you want even cleaner */}
+            <Button size="sm" colorScheme="brand" rounded="full">
+              Try for free
+            </Button>
+          </HStack>
+        </Hide>
+
+        {/* DESKTOP: full tab row */}
+        <Show above="md">
+          <HStack
+            spacing={8}
+            // prevent any accidental horizontal overflow
+            minW={0}
+            overflowX="auto"
+            sx={{ "::-webkit-scrollbar": { display: "none" } }}
+          >
+            {items.map((t) => {
+              const id = t.toLowerCase().replace(/\s/g, "-");
+              const isActive = id === activeId;
+              return (
+                <Link
+                  key={id}
+                  href={`#${id}`}
+                  fontWeight={700}
+                  color={isActive ? "neutral.900" : "neutral.700"}
+                  position="relative"
+                  whiteSpace="nowrap"
+                  _hover={{ color: "brand.700" }}
+                  aria-current={isActive ? "page" : undefined}
+                  _after={{
+                    content: '""',
+                    position: "absolute",
+                    left: 0,
+                    right: 0,
+                    bottom: -6,
+                    height: "2px",
+                    bg: isActive ? "brand.600" : "transparent",
+                    transition: "background-color .2s ease",
+                  }}
+                >
+                  {t}
+                </Link>
+              );
+            })}
+
+            <Box flex="1" />
+
+            <Button
+              size="sm"
+              colorScheme="brand"
+              rounded="full"
               whiteSpace="nowrap"
             >
-              {t}
-            </Link>
-          ))}
-
-          {/* push CTA to the far right */}
-          <Box flex="1" />
-
-          <Button
-            size="sm"
-            colorScheme="brand"
-            rounded="full"
-            whiteSpace="nowrap"
-          >
-            Try for free
-          </Button>
-        </HStack>
+              Try for free
+            </Button>
+          </HStack>
+        </Show>
       </Container>
     </Box>
   );

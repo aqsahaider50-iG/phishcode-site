@@ -50,7 +50,10 @@ export default function ContactCards() {
 
   return (
     <Box bg="neutral.50" py={{ base: 12, md: 20 }}>
-      <Container maxW="7xl">
+      <Container
+        maxW={{ base: "100%", sm: "90%", md: "86%", lg: "82%", xl: "7xl" }}
+        px={{ base: 4, md: 6 }}
+      >
         <MotionBox
           ref={ref}
           variants={stagger(0.12, 0.15)}
@@ -99,7 +102,7 @@ export default function ContactCards() {
                       />
                     </MotionBox>
 
-                    <VStack align="start" spacing={1}>
+                    <VStack align="start" spacing={2}>
                       <MotionBox variants={slideInX(-1, 0.05, 24)}>
                         <Heading
                           size={useBreakpointValue({ base: "sm", md: "md" })}

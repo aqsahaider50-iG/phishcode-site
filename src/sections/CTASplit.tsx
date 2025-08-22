@@ -33,7 +33,10 @@ export default function CTASplit() {
       bg="neutral.50"
       py={{ base: 12, md: 20 }}
     >
-      <Container maxW="7xl">
+      <Container
+        maxW={{ base: "100%", sm: "92%", md: "90%", lg: "86%", xl: "7xl" }}
+        px={{ base: 4, md: 6 }}
+      >
         <Box
           bg="white"
           borderRadius="2xl"

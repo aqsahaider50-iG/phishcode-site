@@ -27,6 +27,7 @@ import { FiPlay } from "react-icons/fi";
 
 // ASSETS
 import banner from "../assets/png imgs/phishcode banner imgg.png";
+import { BsTransparency } from "react-icons/bs";
 
 export default function Hero() {
   const { ref, controls } = useInViewAnimation({ amount: 0.4, once: true });
@@ -81,7 +82,10 @@ export default function Hero() {
         style={{ willChange: "opacity, transform" }}
       />
 
-      <Container maxW="7xl">
+      <Container
+        maxW={{ base: "100%", sm: "92%", md: "90%", lg: "86%", xl: "7xl" }}
+        px={{ base: 4, md: 6 }}
+      >
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
           spacing={{ base: 8, md: 14 }}
