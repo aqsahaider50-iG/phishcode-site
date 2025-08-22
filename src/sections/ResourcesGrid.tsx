@@ -23,7 +23,7 @@ import {
 } from "../components/animations/transitions";
 import useInViewAnimation from "../components/animations/useInViewAnimation";
 import { FiPlay } from "react-icons/fi";
-import resourcesBg from "../assets/png imgs/resources section bg.png";
+import resourcesBg from "../assets/png-imgs/resources section bg.png";
 
 const items = [
   {
