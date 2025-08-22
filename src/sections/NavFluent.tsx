@@ -1,5 +1,5 @@
-import logo from "../assets/logo/phishcode logoo 1.png";
-import feedbackIcon from "../assets/icons/icon feedback-01 1.png";
+import logo from "../assets/logo/phishcode-logo-1.png";
+import feedbackIcon from "../assets/icons/icon-feedback-01.png";
 import {
   Box,
   Container,

@@ -21,7 +21,7 @@ import {
 import useInViewAnimation from "../components/animations/useInViewAnimation";
 
 // Local asset
-import approachDiagram from "../assets/png imgs/approach section png.png";
+import approachDiagram from "../assets/png-imgs/approach section png.png";
 
 export default function ApproachCard() {
   const { ref, controls } = useInViewAnimation({ amount: 0.5, once: true });

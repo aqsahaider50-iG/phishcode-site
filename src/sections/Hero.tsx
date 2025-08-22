@@ -26,7 +26,7 @@ import useInViewAnimation from "../components/animations/useInViewAnimation";
 import { FiPlay } from "react-icons/fi";
 
 // ASSETS
-import banner from "../assets/png imgs/phishcode banner imgg.png";
+import banner from "../assets/png-imgs/phishcode-banner.png";
 import { BsTransparency } from "react-icons/bs";
 
 export default function Hero() {

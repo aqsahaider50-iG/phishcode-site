@@ -21,7 +21,7 @@ import {
 import useInViewAnimation from "../components/animations/useInViewAnimation";
 
 // local hero/banner image
-import banner from "../assets/png imgs/smiling.png";
+import banner from "../assets/png-imgs/smiling.png";
 
 export default function CTASplit() {
   const { ref, controls } = useInViewAnimation({ once: true, amount: 0.5 });
