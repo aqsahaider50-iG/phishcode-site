@@ -9,7 +9,9 @@ import {
   Show,
   Hide,
 } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
+import DemoTrial from "../pages/demo/DemoTrial";
 
 const items = ["Overview", "Impact", "Approach", "Resources", "Next steps"];
 const ids = items.map((t) => t.toLowerCase().replace(/\s/g, "-"));
@@ -125,10 +127,14 @@ export default function TabsBar() {
             <Box flex="1" />
 
             <Button
+              as={RouterLink}
+              to="/trial" // <- navigates to the 3-step flow
               size="sm"
-              colorScheme="brand"
-              rounded="full"
-              whiteSpace="nowrap"
+              bg="#0E1C2B"
+              color="white"
+              borderRadius="6px"
+              px={5}
+              _hover={{ bg: "#0B1622" }}
             >
               Try for free
             </Button>
